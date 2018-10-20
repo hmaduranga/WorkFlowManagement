@@ -1,0 +1,70 @@
+﻿@model IEnumerable<workFlowApp.Work_flow_tbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.work_flow_created_user)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.entry_criteria)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_owner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.work_flow_created_user)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.entry_criteria)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.work_flow_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.work_flow_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.work_flow_id })
+        </td>
+    </tr>
+}
+
+</table>

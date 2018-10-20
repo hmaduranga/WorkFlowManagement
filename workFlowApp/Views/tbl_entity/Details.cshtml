@@ -1,0 +1,91 @@
+﻿@model workFlowApp.tbl_entity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_entity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.entity_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entity_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.action_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.action_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.action_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.action_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.entry_criteria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entry_criteria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exit_criteria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exit_criteria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.entity_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entity_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.change_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.change_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_empoyee.emp_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_empoyee.emp_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Work_flow_tbl.work_flow_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Work_flow_tbl.work_flow_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.entity_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
