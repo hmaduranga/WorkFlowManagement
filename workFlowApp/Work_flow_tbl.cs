@@ -23,10 +23,10 @@ namespace workFlowApp
         public int work_flow_id { get; set; }
         public string work_flow_name { get; set; }
         public string work_flow_description { get; set; }
-        public Nullable<int> work_flow_status { get; set; }
-        public Nullable<System.DateTime> work_flow_created_date { get; set; }
-        public Nullable<int> work_flow_owner { get; set; }
-        public Nullable<int> work_flow_created_user { get; set; }
+        public int work_flow_status { get; set; }
+        public System.DateTime work_flow_created_date { get; set; }
+        public int work_flow_owner { get; set; }
+        public int work_flow_created_user { get; set; }
         public string entry_criteria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

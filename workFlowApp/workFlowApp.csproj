@@ -164,41 +164,35 @@
     <Compile Include="Models\InvalidUserException.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
-    </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_empoyee.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_entity.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_role.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="wfEntity.Context.cs">
+    <Compile Include="WorkFlowModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>wfEntity.Context.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="wfEntity.cs">
+    <Compile Include="WorkFlowModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="wfEntity.Designer.cs">
+    <Compile Include="WorkFlowModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>wfEntity.edmx</DependentUpon>
+      <DependentUpon>WorkFlowModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Work_flow_tbl.cs">
-      <DependentUpon>wfEntity.tt</DependentUpon>
+      <DependentUpon>WorkFlowModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -212,15 +206,16 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="wfEntity.Context.tt">
+    <Content Include="Scripts\db\dbbackup.sql" />
+    <Content Include="WorkFlowModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>wfEntity.Context.cs</LastGenOutput>
-      <DependentUpon>wfEntity.edmx</DependentUpon>
+      <DependentUpon>WorkFlowModel.edmx</DependentUpon>
+      <LastGenOutput>WorkFlowModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="wfEntity.tt">
+    <Content Include="WorkFlowModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>wfEntity.edmx</DependentUpon>
-      <LastGenOutput>wfEntity.cs</LastGenOutput>
+      <DependentUpon>WorkFlowModel.edmx</DependentUpon>
+      <LastGenOutput>WorkFlowModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -247,13 +242,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <EntityDeploy Include="wfEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>wfEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="wfEntity.edmx.diagram">
-      <DependentUpon>wfEntity.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\tbl_empoyee\Create.cshtml" />
     <Content Include="Views\tbl_empoyee\Delete.cshtml" />
     <Content Include="Views\tbl_empoyee\Details.cshtml" />
@@ -272,6 +260,15 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Shared\_Login_Layout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\AdminIndex.cshtml" />
+    <EntityDeploy Include="WorkFlowModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorkFlowModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="WorkFlowModel.edmx.diagram">
+      <DependentUpon>WorkFlowModel.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

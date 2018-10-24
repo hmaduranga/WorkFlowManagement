@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-
+using System.Data.Entity;
 namespace workFlowApp.Models
 {
     public class AuthValidator
@@ -19,7 +17,8 @@ namespace workFlowApp.Models
         {
             // cheack whether emploayee is availabale 
 
-            tbl_empoyee tbl_Empoyee = db.tbl_empoyee.ToList().Where(
+            tbl_empoyee tbl_Empoyee = db.tbl_empoyee.Include(
+                emp => emp.tbl_role).ToList().Where(
                 employee => employee.email.Equals(login.Email, StringComparison.Ordinal) &&
                 employee.password.Equals(login.Password, StringComparison.Ordinal)
                 ).FirstOrDefault();
@@ -34,6 +33,30 @@ namespace workFlowApp.Models
 
             }
 
+        }
+
+        public static bool IsAdministrator(string email, string role)
+        {
+            if (email != null && role == "Administrator")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsMannager(string email, string role)
+        {
+            if (email != null && role == "Administrator")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

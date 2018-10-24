@@ -20,27 +20,27 @@
             <PropertyRef Name="emp_id" />
           </Key>
           <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="emp_name" Type="varchar" MaxLength="50" />
-          <Property Name="emp_role" Type="int" />
-          <Property Name="status" Type="int" />
-          <Property Name="nic" Type="varchar" MaxLength="10" />
-          <Property Name="email" Type="varchar" MaxLength="100" />
-          <Property Name="password" Type="varchar" MaxLength="15" />
-          <Property Name="created_date" Type="date" />
+          <Property Name="emp_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_role" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="nic" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_entity">
           <Key>
             <PropertyRef Name="entity_id" />
           </Key>
           <Property Name="entity_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="entity_name" Type="varchar" MaxLength="35" />
-          <Property Name="action_name" Type="nchar" MaxLength="10" />
-          <Property Name="action_description" Type="varchar" MaxLength="50" />
-          <Property Name="entry_criteria" Type="varchar" MaxLength="25" />
-          <Property Name="exit_criteria" Type="varchar" MaxLength="25" />
-          <Property Name="entity_owner" Type="int" />
-          <Property Name="entity_status" Type="int" />
-          <Property Name="change_status" Type="int" />
+          <Property Name="entity_name" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="action_name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="action_description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="entry_criteria" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="exit_criteria" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="entity_owner" Type="int" Nullable="false" />
+          <Property Name="entity_status" Type="int" Nullable="false" />
+          <Property Name="change_status" Type="int" Nullable="false" />
           <Property Name="workflow_id" Type="int" />
         </EntityType>
         <EntityType Name="tbl_role">
@@ -56,16 +56,16 @@
             <PropertyRef Name="work_flow_id" />
           </Key>
           <Property Name="work_flow_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="work_flow_name" Type="varchar" MaxLength="20" />
-          <Property Name="work_flow_description" Type="varchar" MaxLength="50" />
-          <Property Name="work_flow_status" Type="int" />
-          <Property Name="work_flow_created_date" Type="date" />
-          <Property Name="work_flow_owner" Type="int" />
-          <Property Name="work_flow_created_user" Type="int" />
-          <Property Name="entry_criteria" Type="nchar" MaxLength="10" />
+          <Property Name="work_flow_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="work_flow_description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="work_flow_status" Type="int" Nullable="false" />
+          <Property Name="work_flow_created_date" Type="date" Nullable="false" />
+          <Property Name="work_flow_owner" Type="int" Nullable="false" />
+          <Property Name="work_flow_created_user" Type="int" Nullable="false" />
+          <Property Name="entry_criteria" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_tbl_empoyee_tbl_role">
-          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
+          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="1" />
           <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_role">
@@ -77,7 +77,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbl_entity_tbl_empoyee">
-          <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="0..1" />
+          <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="1" />
           <End Role="tbl_entity" Type="Self.tbl_entity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_empoyee">
@@ -100,37 +100,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WorkFlowDBModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_empoyee" EntityType="Self.tbl_empoyee" Schema="dbo" store:Type="Tables" />
@@ -170,13 +139,13 @@
             <PropertyRef Name="emp_id" />
           </Key>
           <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="emp_role" Type="Int32" />
-          <Property Name="status" Type="Int32" />
-          <Property Name="nic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="created_date" Type="DateTime" Precision="0" />
+          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_role" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="nic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="tbl_role" Relationship="Self.FK_tbl_empoyee_tbl_role" FromRole="tbl_empoyee" ToRole="tbl_role" />
           <NavigationProperty Name="tbl_entity" Relationship="Self.FK_tbl_entity_tbl_empoyee" FromRole="tbl_empoyee" ToRole="tbl_entity" />
         </EntityType>
@@ -185,14 +154,14 @@
             <PropertyRef Name="entity_id" />
           </Key>
           <Property Name="entity_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="entity_name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <Property Name="action_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="action_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="entry_criteria" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="exit_criteria" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="entity_owner" Type="Int32" />
-          <Property Name="entity_status" Type="Int32" />
-          <Property Name="change_status" Type="Int32" />
+          <Property Name="entity_name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="action_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="action_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entry_criteria" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="exit_criteria" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entity_owner" Type="Int32" Nullable="false" />
+          <Property Name="entity_status" Type="Int32" Nullable="false" />
+          <Property Name="change_status" Type="Int32" Nullable="false" />
           <Property Name="workflow_id" Type="Int32" />
           <NavigationProperty Name="tbl_empoyee" Relationship="Self.FK_tbl_entity_tbl_empoyee" FromRole="tbl_entity" ToRole="tbl_empoyee" />
           <NavigationProperty Name="Work_flow_tbl" Relationship="Self.FK_tbl_entity_Work_flow_tbl" FromRole="tbl_entity" ToRole="Work_flow_tbl" />
@@ -211,17 +180,17 @@
             <PropertyRef Name="work_flow_id" />
           </Key>
           <Property Name="work_flow_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="work_flow_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="work_flow_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="work_flow_status" Type="Int32" />
-          <Property Name="work_flow_created_date" Type="DateTime" Precision="0" />
-          <Property Name="work_flow_owner" Type="Int32" />
-          <Property Name="work_flow_created_user" Type="Int32" />
-          <Property Name="entry_criteria" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="work_flow_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="work_flow_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="work_flow_status" Type="Int32" Nullable="false" />
+          <Property Name="work_flow_created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="work_flow_owner" Type="Int32" Nullable="false" />
+          <Property Name="work_flow_created_user" Type="Int32" Nullable="false" />
+          <Property Name="entry_criteria" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tbl_entity" Relationship="Self.FK_tbl_entity_Work_flow_tbl" FromRole="Work_flow_tbl" ToRole="tbl_entity" />
         </EntityType>
         <Association Name="FK_tbl_empoyee_tbl_role">
-          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
+          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="1" />
           <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_role">
@@ -233,7 +202,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbl_entity_tbl_empoyee">
-          <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="0..1" />
+          <End Role="tbl_empoyee" Type="Self.tbl_empoyee" Multiplicity="1" />
           <End Role="tbl_entity" Type="Self.tbl_entity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_empoyee">
@@ -274,48 +243,7 @@
             <End Role="Work_flow_tbl" EntitySet="Work_flow_tbl" />
             <End Role="tbl_entity" EntitySet="tbl_entity" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WorkFlowDBModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WorkFlowDBModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -386,30 +314,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WorkFlowDBModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WorkFlowDBModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WorkFlowDBModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WorkFlowDBModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WorkFlowDBModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WorkFlowDBModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WorkFlowDBModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WorkFlowDBModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WorkFlowDBModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

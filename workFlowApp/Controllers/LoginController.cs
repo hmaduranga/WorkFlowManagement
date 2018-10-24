@@ -40,11 +40,11 @@ namespace workFlowApp.Controllers
                     AuthValidator authValidator = new AuthValidator();
                     tbl_empoyee tbl_Empoyee = authValidator.IsvalidUser(login);
 
-                    Session["Email"] = tbl_Empoyee.emp_name;
-                    Session["Role"] = tbl_Empoyee.emp_role;
+                    Session["Email"] = tbl_Empoyee.email;
+                    Session["Role"] = tbl_Empoyee.tbl_role.role_name;
                     Session["Name"] = tbl_Empoyee.emp_name;
 
-                    return RedirectToAction("Home/Index");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

@@ -22,12 +22,12 @@ namespace workFlowApp
     
         public int emp_id { get; set; }
         public string emp_name { get; set; }
-        public Nullable<int> emp_role { get; set; }
-        public Nullable<int> status { get; set; }
+        public int emp_role { get; set; }
+        public int status { get; set; }
         public string nic { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public Nullable<System.DateTime> created_date { get; set; }
+        public System.DateTime created_date { get; set; }
     
         public virtual tbl_role tbl_role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

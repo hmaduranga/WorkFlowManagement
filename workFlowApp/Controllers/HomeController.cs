@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using workFlowApp.Models;
 
 namespace workFlowApp.Controllers
 {
@@ -10,7 +11,16 @@ namespace workFlowApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+    
+            if (AuthValidator.IsAdministrator(Session["Email"].ToString(), Session["Role"].ToString()))
+            {
+                return RedirectToAction("AdminIndex", "Home");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public ActionResult About()
@@ -24,6 +34,11 @@ namespace workFlowApp.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult AdminIndex()
+        {
             return View();
         }
     }

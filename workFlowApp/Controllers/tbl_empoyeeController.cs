@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using workFlowApp;
+using workFlowApp.Models;
 
 namespace workFlowApp.Controllers
 {
@@ -17,7 +18,8 @@ namespace workFlowApp.Controllers
         // GET: tbl_empoyee
         public ActionResult Index()
         {
-            if (Session["Emial"] != null && Session["Role"] == "Admin" )
+            
+            if (AuthValidator.IsAdministrator(Session["Email"].ToString(), Session["Role"].ToString()))
             {
                 var tbl_empoyee = db.tbl_empoyee.Include(t => t.tbl_role);
                 return View(tbl_empoyee.ToList());

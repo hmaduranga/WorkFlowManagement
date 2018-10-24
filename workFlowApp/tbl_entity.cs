@@ -20,9 +20,9 @@ namespace workFlowApp
         public string action_description { get; set; }
         public string entry_criteria { get; set; }
         public string exit_criteria { get; set; }
-        public Nullable<int> entity_owner { get; set; }
-        public Nullable<int> entity_status { get; set; }
-        public Nullable<int> change_status { get; set; }
+        public int entity_owner { get; set; }
+        public int entity_status { get; set; }
+        public int change_status { get; set; }
         public Nullable<int> workflow_id { get; set; }
     
         public virtual tbl_empoyee tbl_empoyee { get; set; }
